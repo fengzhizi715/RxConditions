@@ -29,7 +29,7 @@ Maven:
 ```
 
 # 使用方法：
-## ifThen
+## 1.ifThen用法
 
 if 条件下传统的写法：
 ```java
@@ -104,7 +104,7 @@ ifThen还可以支持Flowable：
 ```
 
 
-## switchCase
+## 2.switchCase用法
 
 
 License
