@@ -31,7 +31,7 @@ Maven:
 # 使用方法：
 ## 1.ifThen用法
 
-if 条件下传统的写法：
+if条件语句传统的写法：
 ```java
 		Observable<String> observable = null;
 		if (flag) {
@@ -105,6 +105,59 @@ ifThen还可以支持Flowable：
 
 
 ## 2.switchCase用法
+
+switch case语句传统的写法：
+```java
+		Flowable<String> flowable = null;
+		switch(type) {
+			case 0:
+				flowable = Flowable.just("this is 0");
+				break;
+			case 1:
+				flowable = Flowable.just("this is 1");
+				break;
+			case 2:
+				flowable = Flowable.just("this is 2");
+				break;
+			case 3:
+				flowable = Flowable.just("this is 3");
+				break;
+
+			default:
+				flowable = Flowable.just("this is default");
+				break;
+		}
+		flowable.subscribe(new Consumer<String>() {
+			@Override
+			public void accept(@NonNull String s) throws Exception {
+				System.out.println("s="+s);
+			}
+		});
+```
+
+使用了switchCase以后的写法：
+```java
+		Map<Integer,Flowable<String>> maps = new HashMap<>();
+		maps.put(0,Flowable.just("this is 0"));
+		maps.put(1,Flowable.just("this is 1"));
+		maps.put(2,Flowable.just("this is 2"));
+		maps.put(3,Flowable.just("this is 3"));
+		
+		Statement.switchCase(new Callable<Integer>() {
+
+			@Override
+			public Integer call() throws Exception {
+				return type;
+			}
+		},maps,Flowable.just("this is default"))
+				.subscribe(new Consumer<String>() {
+					@Override
+					public void accept(@NonNull String s) throws Exception {
+						System.out.println("s="+s);
+					}
+				});
+```
+其中，switchCase()的最后一个参数是defaultCase，相当于switch case中的default。
 
 
 License
