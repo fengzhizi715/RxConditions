@@ -7,7 +7,7 @@
 # 目的
 通常而言，if条件语句、switch case语句会破坏链式调用。这个库产生的目的就是为了避免在这些情况下中断链式调用。
 我最初找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 由于它历史有点久远并且是使用Rxjava1，
-于是我将RxJava1升级到Rxjava2，并做了一些优化。
+于是我将RxJava1升级到Rxjava2，并做了一些优化，支持Flowable。
 
 
 # 下载安装
@@ -29,7 +29,7 @@ Maven:
 ```
 
 # 使用方法：
-##ifThen
+## ifThen
 
 if 条件下传统的写法：
 ```java
@@ -84,7 +84,18 @@ if 条件下传统的写法：
 		});
 ```
 
-##switchCase
+更进一步，使用lambda表达式：
+```java
+        Statement.ifThen(()->{
+             return flag;
+        },Observable.create((e)->{
+             e.onNext("this is true");
+        }),Observable.create((e)->{
+             e.onNext("this is false");
+        })).subscribe((Consume) (s) -> {System.out.println("s="+s)});
+```
+
+## switchCase
 
 
 License
