@@ -150,14 +150,26 @@ switch case语句传统的写法：
 				return type;
 			}
 		},maps,Flowable.just("this is default"))
-				.subscribe(new Consumer<String>() {
-					@Override
-					public void accept(@NonNull String s) throws Exception {
-						System.out.println("s="+s);
-					}
-				});
+		.subscribe(new Consumer<String>() {
+			@Override
+			public void accept(@NonNull String s) throws Exception {
+				System.out.println("s="+s);
+			}
+		});
 ```
 其中，switchCase()的最后一个参数是defaultCase，相当于switch case中的default。
+
+改成lambda表达：
+```java
+		Map<Integer,Flowable<String>> maps = new HashMap<>();
+		maps.put(0,Flowable.just("this is 0"));
+		maps.put(1,Flowable.just("this is 1"));
+		maps.put(2,Flowable.just("this is 2"));
+		maps.put(3,Flowable.just("this is 3"));
+		
+		Statement.switchCase((Callable)()-> {return type;},maps,Flowable.just("this is default"))
+		.subscribe((Consumer)(s) -> {System.out.println("s="+s);});
+```
 
 
 License
