@@ -5,8 +5,9 @@
 
 
 # 目的
-通常而言，if条件语句、switch case语句会破坏链式调用。这个库的产生就是为了在这些情况下不会中断链式调用。
-最初参考了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions), 将RxJava升级到Rxjava2，并做了一些优化。
+通常而言，if条件语句、switch case语句会破坏链式调用。这个库产生的目的就是为了避免在这些情况下中断链式调用。
+我最初找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 由于它历史有点久远并且是使用Rxjava1，
+于是我将RxJava1升级到Rxjava2，并做了一些优化。
 
 
 # 下载安装
@@ -27,7 +28,63 @@ Maven:
 </dependency>
 ```
 
-# 使用方法
+# 使用方法：
+##ifThen
+
+if 条件下传统的写法：
+```java
+		Observable<String> observable = null;
+		if (flag) {
+
+			observable = Observable.create(new ObservableOnSubscribe<String>() {
+				@Override
+				public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+					e.onNext("this is true");
+				}
+			});
+		} else {
+			observable = Observable.create(new ObservableOnSubscribe<String>() {
+				@Override
+				public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+					e.onNext("this is false");
+				}
+			});
+		}
+
+		observable.subscribe(new Consumer<String>() {
+			@Override
+			public void accept(@NonNull String s) throws Exception {
+				System.out.println("s="+s);
+			}
+		});
+```
+
+使用了ifThen以后的写法：
+```java
+		Statement.ifThen(new BooleanSupplier() {
+			@Override
+			public boolean getAsBoolean() throws Exception {
+				return flag;
+			}
+		}, Observable.create(new ObservableOnSubscribe<String>() {
+			@Override
+			public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+				e.onNext("this is true");
+			}
+		}),Observable.create(new ObservableOnSubscribe<String>() {
+			@Override
+			public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+				e.onNext("this is false");
+			}
+		})).subscribe(new Consumer<String>() {
+			@Override
+			public void accept(@NonNull String s) throws Exception {
+				System.out.println("s="+s);
+			}
+		});
+```
+
+##switchCase
 
 
 License
