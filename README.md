@@ -4,6 +4,10 @@
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
+# 目的
+通常而言，if条件语句、switch case语句会破坏链式调用。这个库的产生就是为了在这些情况下不会中断链式调用。
+最初参考了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions), 将RxJava升级到Rxjava2，并做了一些优化。
+
 
 # 下载安装
 Gradle:
@@ -22,6 +26,9 @@ Maven:
   <type>pom</type>
 </dependency>
 ```
+
+# 使用方法
+
 
 License
 -------
