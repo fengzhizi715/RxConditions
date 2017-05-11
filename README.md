@@ -1,29 +1,28 @@
 # RxCondition
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
-[![Download](https://img.shields.io/badge/Download-1.0.0-red.svg)](https://bintray.com/fengzhizi715/maven/rxcondition/_latestVersion)
+[![Download](https://img.shields.io/badge/Download-1.0.1-red.svg)](https://bintray.com/fengzhizi715/maven/rxcondition/_latestVersion)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
-# 目的
-通常而言，if条件语句、switch case语句会破坏链式调用。这个库产生的目的就是为了避免在这些情况下中断链式调用。
-我最初找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 由于它历史有点久远并且是使用Rxjava1，
-于是我将RxJava1升级到Rxjava2，支持了Flowable，并做了一些优化。
+通常而言，Rx如果遇到if条件语句、switch case语句时需要先选择分支条件，然后再进行链式调用。RxCondition产生的目的就是为了在这些情况下也能顺利地使用链式调用。
 
+我在查找RxJava的条件、布尔操作符时，没有找到符合我需求的操作符。于是，我在网上找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 做了一些修改将RxJava1升级到RxJava2，增加了对Flowable的支持。
 
 # 下载安装
+
 Gradle:
 
 ```groovy
-compile 'tony-common:rxcondition:1.0.0'
+compile 'com.safframework:rxcondition:1.0.1'
 ```
 
 Maven:
 
 ```groovy
 <dependency>
-  <groupId>tony-common</groupId>
+  <groupId>com.safframework</groupId>
   <artifactId>rxcondition</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -59,7 +58,7 @@ if条件语句传统的写法：
 		});
 ```
 
-使用了ifThen以后的写法：
+使用了ifThen()以后的写法：
 ```java
 		Statement.ifThen(new BooleanSupplier() {
 			@Override
@@ -83,8 +82,9 @@ if条件语句传统的写法：
 			}
 		});
 ```
+ifThen(BooleanSupplier condition, Observable<? extends R> then,Observable<? extends R> orElse)，其中第一个Observable是条件为true时执行的，第二个Observable则是条件为false时执行。
 
-更进一步，使用lambda表达式：
+使用lambda表达式，进一步简化写法：
 ```java
         Statement.ifThen(()->{
              return flag;
@@ -95,14 +95,13 @@ if条件语句传统的写法：
         })).subscribe((Consume) (s) -> {System.out.println("s="+s)});
 ```
 
-ifThen还可以支持Flowable：
+当然，ifThen也支持Flowable：
 ```java
         Statement.ifThen(()->{
               return flag;
         },Flowable.just("this is true"), Flowable.just("this is false"))
         .subscribe((Consume) (s) -> {System.out.println("s="+s)});
 ```
-
 
 ## 2.switchCase用法
 
@@ -135,7 +134,7 @@ switch case语句传统的写法：
 		});
 ```
 
-使用了switchCase以后的写法：
+使用了switchCase()以后的写法：
 ```java
 		Map<Integer,Flowable<String>> maps = new HashMap<>();
 		maps.put(0,Flowable.just("this is 0"));
@@ -157,7 +156,8 @@ switch case语句传统的写法：
 			}
 		});
 ```
-其中，switchCase()的最后一个参数是defaultCase，相当于switch case中的default。
+首先，将各个分支情况放入maps中。
+其次，switchCase()的第一个参数是caseSelector，用于返回maps的key。最后一个参数是defaultCase，相当于switch case语句中的default语句。
 
 改成lambda表达：
 ```java
@@ -170,6 +170,12 @@ switch case语句传统的写法：
 		Statement.switchCase((Callable)()-> {return type;},maps,Flowable.just("this is default"))
 		.subscribe((Consumer)(s) -> {System.out.println("s="+s);});
 ```
+
+switchCase()中，第一个参数返回的是Map<K, R>中的key，它支持范型，所以switchCase()相对于switch case语句而已能够支持更多种类型。
+
+
+# 总结
+这个库其实很简单，编写它的同时我加深了对RxJava中Observable/Flowable原理的认识。
 
 
 License

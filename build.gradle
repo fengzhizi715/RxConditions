@@ -1,4 +1,4 @@
-group 'tony-common'
+group 'com.safframework'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -45,9 +45,9 @@ allprojects {
 
 publish{
     userOrg = 'fengzhizi715'
-    groupId = 'tony-common'
+    groupId = 'com.safframework'
     artifactId = 'rxcondition'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'this is a computational expressions library use rxjava2'
     website = 'https://github.com/fengzhizi715/RxCondition'
 }
