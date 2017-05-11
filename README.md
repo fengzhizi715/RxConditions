@@ -174,10 +174,6 @@ switch case语句传统的写法：
 switchCase()中，第一个参数返回的是Map<K, R>中的key，它支持范型，所以switchCase()相对于switch case语句而已能够支持更多种类型。
 
 
-# 总结
-这个库其实很简单，编写它的同时我加深了对RxJava中Observable/Flowable原理的认识。
-
-
 License
 -------
 
