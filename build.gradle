@@ -20,7 +20,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.novoda:bintray-release:+'
+        classpath 'com.novoda:bintray-release:0.4.0'
     }
 }
 
@@ -47,7 +47,7 @@ publish{
     userOrg = 'fengzhizi715'
     groupId = 'com.safframework'
     artifactId = 'rxcondition'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.0'
     desc = 'this is a computational expressions library use rxjava2'
     website = 'https://github.com/fengzhizi715/RxCondition'
 }

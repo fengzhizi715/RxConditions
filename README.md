@@ -1,11 +1,32 @@
 # RxCondition
 [![@Tony沈哲 on weibo](https://img.shields.io/badge/weibo-%40Tony%E6%B2%88%E5%93%B2-blue.svg)](http://www.weibo.com/fengzhizi715)
+[![Download](https://img.shields.io/badge/Download-1.0.0-red.svg)](https://bintray.com/fengzhizi715/maven/rxcondition/_latestVersion)
+[![GitHub release](https://img.shields.io/badge/release-1.0.0-blue.svg)](https://github.com/fengzhizi715/RxCondition/releases)
 [![License](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
 通常而言，Rx如果遇到if条件语句、switch case语句时需要先选择分支条件，然后再进行链式调用。RxCondition产生的目的就是为了在这些情况下也能顺利地使用链式调用。
 
 我在查找RxJava的条件、布尔操作符时，没有找到符合我需求的操作符。于是，我在网上找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 做了一些修改将RxJava1升级到RxJava2，增加了对Flowable的支持。
+
+# 下载安装
+
+Gradle:
+
+```groovy
+compile 'com.safframework:rxcondition:1.0.0'
+```
+
+Maven:
+
+```groovy
+<dependency>
+  <groupId>com.safframework</groupId>
+  <artifactId>rxcondition</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 
 # 使用方法：
