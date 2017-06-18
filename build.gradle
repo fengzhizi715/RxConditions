@@ -45,9 +45,9 @@ allprojects {
 
 publish{
     userOrg = 'fengzhizi715'
-    groupId = 'com.safframework'
+    groupId = 'tony-common'
     artifactId = 'rxcondition'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'this is a computational expressions library use rxjava2'
     website = 'https://github.com/fengzhizi715/RxCondition'
 }

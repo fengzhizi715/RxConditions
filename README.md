@@ -14,16 +14,16 @@
 Gradle:
 
 ```groovy
-compile 'com.safframework:rxcondition:1.0.0'
+compile 'tony-common:rxcondition:1.0.1'
 ```
 
 Maven:
 
 ```groovy
 <dependency>
-  <groupId>com.safframework</groupId>
+  <groupId>tony-common</groupId>
   <artifactId>rxcondition</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
