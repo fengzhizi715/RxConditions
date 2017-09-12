@@ -14,7 +14,7 @@
 Gradle:
 
 ```groovy
-compile 'tony-common:rxcondition:1.0.1'
+compile 'tony-common:rxconditions:1.0.0'
 ```
 
 Maven:
@@ -22,8 +22,8 @@ Maven:
 ```groovy
 <dependency>
   <groupId>tony-common</groupId>
-  <artifactId>rxcondition</artifactId>
-  <version>1.0.1</version>
+  <artifactId>rxconditions</artifactId>
+  <version>1.0.0</version>
   <type>pom</type>
 </dependency>
 ```
