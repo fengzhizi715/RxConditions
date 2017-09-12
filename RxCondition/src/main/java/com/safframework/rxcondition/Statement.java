@@ -1,6 +1,7 @@
 package com.safframework.rxcondition;
 
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.functions.BooleanSupplier;
 import io.reactivex.plugins.RxJavaPlugins;
@@ -33,6 +34,17 @@ public final class Statement {
                                          Flowable<? extends R> orElse) {
 
         return RxJavaPlugins.onAssembly(new FlowableIfThen<R>(condition, then, orElse));
+    }
+
+    public static <R> Maybe<R> ifThen(BooleanSupplier condition, Maybe<? extends R> then) {
+
+        return ifThen(condition, then, Maybe.<R>empty());
+    }
+
+    public static <R> Maybe<R> ifThen(BooleanSupplier condition, Maybe<? extends R> then,
+                                      Maybe<? extends R> orElse) {
+
+        return RxJavaPlugins.onAssembly(new MaybeIfThen<R>(condition, then, orElse));
     }
 
     public static <K, R> Observable<R> switchCase(Callable<? extends K> caseSelector,
