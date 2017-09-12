@@ -1,12 +1,12 @@
 package com.safframework.rxcondition;
 
-import java.util.Map;
-import java.util.concurrent.Callable;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.internal.disposables.EmptyDisposable;
+
+import java.util.Map;
+import java.util.concurrent.Callable;
 
 /**
  * Created by Tony Shen on 2017/5/10.

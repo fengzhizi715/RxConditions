@@ -1,13 +1,12 @@
 package com.safframework.rxcondition;
 
+import io.reactivex.Flowable;
+import io.reactivex.internal.subscriptions.EmptySubscription;
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
-
-import io.reactivex.Flowable;
-import io.reactivex.internal.subscriptions.EmptySubscription;
 
 /**
  * Created by Tony Shen on 2017/5/9.

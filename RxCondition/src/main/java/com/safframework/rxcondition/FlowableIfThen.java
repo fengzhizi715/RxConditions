@@ -1,11 +1,10 @@
 package com.safframework.rxcondition;
 
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-
 import io.reactivex.Flowable;
 import io.reactivex.functions.BooleanSupplier;
 import io.reactivex.internal.subscriptions.EmptySubscription;
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
 
 /**
  * Created by Tony Shen on 2017/5/9.

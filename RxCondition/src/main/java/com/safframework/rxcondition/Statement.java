@@ -1,14 +1,13 @@
 package com.safframework.rxcondition;
 
-import org.reactivestreams.Publisher;
-
-import java.util.Map;
-import java.util.concurrent.Callable;
-
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.functions.BooleanSupplier;
 import io.reactivex.plugins.RxJavaPlugins;
+import org.reactivestreams.Publisher;
+
+import java.util.Map;
+import java.util.concurrent.Callable;
 
 /**
  * Created by Tony Shen on 2017/5/9.
