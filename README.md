@@ -8,6 +8,16 @@
 我在查找RxJava的条件、布尔操作符时，没有找到符合我需求的操作符。于是，我在网上找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 做了一些修改将RxJava1升级到RxJava2，增加了对Flowable的支持。
 
 # 下载安装
+对于Android项目，Android Studio默认使用jcenter。
+
+对于Java项目如果使用gradle构建，由于默认不是使用jcenter，需要在相应module的build.gradle中配置
+
+```groovy
+repositories {
+    mavenCentral()
+    jcenter()
+}
+```
 
 Gradle:
 
