@@ -1,5 +1,6 @@
 package com.safframework.rxcondition;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
@@ -45,6 +46,17 @@ public final class Statement {
                                       Maybe<? extends R> orElse) {
 
         return RxJavaPlugins.onAssembly(new MaybeIfThen<R>(condition, then, orElse));
+    }
+
+    public static Completable ifThen(BooleanSupplier condition, Completable then) {
+
+        return ifThen(condition, then, Completable.complete());
+    }
+
+    public static Completable ifThen(BooleanSupplier condition, Completable then,
+                                     Completable orElse) {
+
+        return RxJavaPlugins.onAssembly(new CompletableIfThen(condition, then, orElse));
     }
 
     public static <K, R> Observable<R> switchCase(Callable<? extends K> caseSelector,
