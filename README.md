@@ -23,7 +23,7 @@ repositories {
 Gradle:
 
 ```groovy
-compile 'tony-common:rxconditions:1.0.2'
+compile 'tony-common:rxconditions:1.1.0'
 ```
 
 Maven:
@@ -32,7 +32,7 @@ Maven:
 <dependency>
   <groupId>tony-common</groupId>
   <artifactId>rxconditions</artifactId>
-  <version>1.0.2</version>
+  <version>1.1.0</version>
   <type>pom</type>
 </dependency>
 ```
