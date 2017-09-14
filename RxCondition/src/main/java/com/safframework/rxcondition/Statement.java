@@ -92,4 +92,10 @@ public final class Statement {
         return RxJavaPlugins.onAssembly(new SingleSwitchCase<R, K>(caseSelector, mapOfCases, defaultCase));
     }
 
+    public static <K> Completable switchCase(Callable<? extends K> caseSelector,
+                                              Map<? super K, ? extends Completable> mapOfCases,
+                                             Completable defaultCase) {
+        return RxJavaPlugins.onAssembly(new CompletableSwitchCase<K>(caseSelector, mapOfCases, defaultCase));
+    }
+
 }

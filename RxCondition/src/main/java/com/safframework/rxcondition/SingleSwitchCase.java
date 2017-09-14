@@ -10,7 +10,7 @@ import java.util.concurrent.Callable;
 /**
  * Created by tony on 2017/9/14.
  */
-public class SingleSwitchCase<T, K> extends Single<T> {
+final class SingleSwitchCase<T, K> extends Single<T> {
 
     final Callable<? extends K> caseSelector;
 

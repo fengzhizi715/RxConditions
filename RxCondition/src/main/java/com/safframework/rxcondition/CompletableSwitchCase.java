@@ -9,26 +9,26 @@ import java.util.concurrent.Callable;
 /**
  * Created by tony on 2017/9/14.
  */
-final class MaybeSwitchCase<T, K> extends Maybe<T> {
+final class CompletableSwitchCase<K> extends Completable {
 
     final Callable<? extends K> caseSelector;
 
-    final Map<? super K, ? extends MaybeSource<? extends T>> mapOfCases;
+    final Map<? super K, ? extends CompletableSource> mapOfCases;
 
-    final MaybeSource<? extends T> defaultCase;
+    final CompletableSource defaultCase;
 
-    MaybeSwitchCase(Callable<? extends K> caseSelector,
-                         Map<? super K, ? extends MaybeSource<? extends T>> mapOfCases,
-                    MaybeSource<? extends T> defaultCase) {
+    CompletableSwitchCase(Callable<? extends K> caseSelector,
+                         Map<? super K, ? extends CompletableSource> mapOfCases,
+                          CompletableSource defaultCase) {
         this.caseSelector = caseSelector;
         this.mapOfCases = mapOfCases;
         this.defaultCase = defaultCase;
     }
 
     @Override
-    protected void subscribeActual(MaybeObserver<? super T> observer) {
+    protected void subscribeActual(CompletableObserver observer) {
         K key;
-        MaybeSource<? extends T> source;
+        CompletableSource source;
 
         try {
             key = caseSelector.call();
