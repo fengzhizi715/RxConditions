@@ -1,9 +1,6 @@
 package com.safframework.rxcondition;
 
-import io.reactivex.Completable;
-import io.reactivex.Flowable;
-import io.reactivex.Maybe;
-import io.reactivex.Observable;
+import io.reactivex.*;
 import io.reactivex.functions.BooleanSupplier;
 import io.reactivex.plugins.RxJavaPlugins;
 import org.reactivestreams.Publisher;
@@ -46,6 +43,17 @@ public final class Statement {
                                       Maybe<? extends R> orElse) {
 
         return RxJavaPlugins.onAssembly(new MaybeIfThen<R>(condition, then, orElse));
+    }
+
+    public static <R> Single<R> ifThen(BooleanSupplier condition, Single then) {
+
+        return ifThen(condition, then, Single.never());
+    }
+
+    public static <R> Single<R> ifThen(BooleanSupplier condition, Single then,
+                                       Single orElse) {
+
+        return RxJavaPlugins.onAssembly(new SingleIfThen(condition, then, orElse));
     }
 
     public static Completable ifThen(BooleanSupplier condition, Completable then) {
