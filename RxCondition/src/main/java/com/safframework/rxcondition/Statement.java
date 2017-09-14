@@ -80,4 +80,10 @@ public final class Statement {
         return RxJavaPlugins.onAssembly(new FlowableSwitchCase<R, K>(caseSelector, mapOfCases, defaultCase));
     }
 
+    public static <K, R> Maybe<R> switchCase(Callable<? extends K> caseSelector,
+                                                  Map<? super K, ? extends Maybe<? extends R>> mapOfCases,
+                                             Maybe<? extends R> defaultCase) {
+        return RxJavaPlugins.onAssembly(new MaybeSwitchCase<R, K>(caseSelector, mapOfCases, defaultCase));
+    }
+
 }
