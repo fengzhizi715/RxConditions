@@ -2,6 +2,7 @@ package com.safframework.rxcondition;
 
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
+import io.reactivex.SingleSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.BooleanSupplier;
 import io.reactivex.internal.disposables.EmptyDisposable;
@@ -15,12 +16,12 @@ final class SingleIfThen<T> extends Single<T> {
 
     final BooleanSupplier condition;
 
-    final Single<? extends T> then;
+    final SingleSource<? extends T> then;
 
-    final Single<? extends T> orElse;
+    final SingleSource<? extends T> orElse;
 
-    SingleIfThen(BooleanSupplier condition, Single<? extends T> then,
-                 Single<? extends T> orElse) {
+    SingleIfThen(BooleanSupplier condition, SingleSource<? extends T> then,
+                 SingleSource<? extends T> orElse) {
         this.condition = condition;
         this.then = then;
         this.orElse = orElse;
