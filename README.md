@@ -6,7 +6,7 @@
 
 通常而言，Rx如果遇到if条件语句、switch case语句时需要先选择分支条件，然后再进行链式调用。RxCondition产生的目的就是为了在这些情况下也能顺利地使用链式调用。
 
-我在查找RxJava的条件、布尔操作符时，没有找到符合我需求的操作符。于是，我在网上找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 做了一些修改将RxJava1升级到RxJava2，增加了对Flowable的支持。
+我在查找RxJava的条件、布尔操作符时，没有找到符合我需求的操作符。于是，我在网上找到了[RxJavaComputationExpressions](https://github.com/ReactiveX/RxJavaComputationExpressions)， 做了一些修改将RxJava1升级到RxJava2，增加了对Flowable、Maybe、Single、Completable的支持。
 
 # 下载安装
 对于Android项目，Android Studio默认使用jcenter。
@@ -23,7 +23,7 @@ repositories {
 Gradle:
 
 ```groovy
-compile 'tony-common:rxconditions:1.0.0'
+compile 'tony-common:rxconditions:1.0.2'
 ```
 
 Maven:
@@ -32,7 +32,7 @@ Maven:
 <dependency>
   <groupId>tony-common</groupId>
   <artifactId>rxconditions</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
   <type>pom</type>
 </dependency>
 ```
