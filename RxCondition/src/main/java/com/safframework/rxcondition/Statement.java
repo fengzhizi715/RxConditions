@@ -45,13 +45,13 @@ public final class Statement {
         return RxJavaPlugins.onAssembly(new MaybeIfThen<R>(condition, then, orElse));
     }
 
-    public static <R> Single<R> ifThen(BooleanSupplier condition, Single then) {
+    public static <R> Single<R> ifThen(BooleanSupplier condition, Single<? extends R> then) {
 
-        return ifThen(condition, then, Single.never());
+        return ifThen(condition, then, Single.<R>never());
     }
 
-    public static <R> Single<R> ifThen(BooleanSupplier condition, Single then,
-                                       Single orElse) {
+    public static <R> Single<R> ifThen(BooleanSupplier condition, Single<? extends R> then,
+                                       Single<? extends R> orElse) {
 
         return RxJavaPlugins.onAssembly(new SingleIfThen(condition, then, orElse));
     }
